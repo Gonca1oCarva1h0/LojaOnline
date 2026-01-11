@@ -25,7 +25,15 @@ export const CartProvider = ({ children }) => {
     const totalValue = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, updateQty, remove, clearCart, totalItems, totalValue }}>
+        <CartContext.Provider value={{
+            cart,
+            addToCart,
+            updateQty,
+            remove,
+            clearCart,
+            totalItems,
+            totalValue: Number(totalValue.toFixed(2)) // Força 2 casas decimais
+        }}>
             {children}
         </CartContext.Provider>
     );
